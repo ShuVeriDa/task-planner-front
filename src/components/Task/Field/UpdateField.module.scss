@@ -1,0 +1,21 @@
+.field {
+  display: flex;
+  align-items: center;
+  .input {
+    border: 1px solid #E0E0E0;
+    height: 25px;
+    font-size: 15px;
+    padding: 0 10px;
+    width: 100%;
+    outline: none;
+  }
+
+  .btn {
+    padding: 0 10px;
+    height: 28px;
+    border: 1px solid #E0E0E0;
+    background: #007BFF;
+    color: #fff;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,30 @@
+
+
+.field {
+  display: flex;
+  width: 100%;
+
+  justify-content: left;
+  max-width: 400px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+
+  .input {
+    border: 1px solid #E0E0E0;
+    height:40px;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 300px;
+    outline: none;
+  }
+
+  .btn {
+    height: 42px;
+    width: 80px;
+    padding: 0 10px;
+    border: 1px solid #E0E0E0;
+    background: #007BFF;
+    color: #fff;
+    cursor: pointer;
+  }
+}
