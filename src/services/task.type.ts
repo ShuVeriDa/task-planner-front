@@ -20,6 +20,7 @@ export interface ITask {
   title: string
   description: string
   completed: boolean
+  dateTime: string
   isVisible: boolean
   createdAt: string
   updatedAt: string
@@ -42,4 +43,12 @@ export interface ICreateTask {
   title: string;
   description: string;
   dateTime: string
+}
+
+export interface IUpdateTask {
+  title?: string;
+  description?: string;
+  dateTime?: string
+  isVisible?: boolean
+  completed?: boolean
 }

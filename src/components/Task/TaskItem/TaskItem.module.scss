@@ -1,0 +1,51 @@
+.taskItem {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  width: 450px;
+
+  //align-items: center;
+
+  .title {
+    font-size: 20px;
+    width: inherit;
+  }
+
+  .checkbox {
+    display: flex;
+    //align-content: center;
+    flex-direction: column;
+    justify-content: center;
+
+    input {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .description {
+    color: #b0afaf;
+    width: inherit;
+  }
+
+
+  .infoContainer {
+    display: flex;
+    align-items: start;
+    max-width: 425px;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .info {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .date {
+    padding: 5px 0;
+    box-sizing: border-box;
+  }
+}

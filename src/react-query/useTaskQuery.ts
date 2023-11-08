@@ -1,7 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {TaskService} from "../services/task.service.ts";
 import {useMemo} from "react";
-import {ICreateTask} from "../services/task.type.ts";
+import {ICreateTask, IUpdateTask} from "../services/task.type.ts";
 
 export const useTaskQuery = (taskId?: string, order?: 'asc' | 'desc') => {
   const getTasks = useQuery({
@@ -18,7 +18,14 @@ export const useTaskQuery = (taskId?: string, order?: 'asc' | 'desc') => {
     }
   })
 
+  const updateTask = useMutation({
+    mutationFn: (data: IUpdateTask) => TaskService.updateTask(taskId!, data),
+    onSuccess: () => {
+      client.invalidateQueries({queryKey: ['allTasks']})
+    }
+  })
+
   return useMemo(() => ({
-    getTasks, createTask
-  }), [getTasks, createTask])
+    getTasks, createTask, updateTask
+  }), [getTasks, createTask, updateTask])
 }

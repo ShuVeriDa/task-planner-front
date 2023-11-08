@@ -12,7 +12,6 @@ import DateTimePicker from "react-datetime-picker";
 interface IFieldProps {
   register?: UseFormRegister<ICreateTask>
   onChange?: (text: string) => void
-  name: "title" | 'description' | "dateTime"
   styles?: { readonly [key: string]: string }
   isButton?: boolean
   value?: string
@@ -22,7 +21,7 @@ interface IFieldProps {
 
 export const Field: FC<IFieldProps> = (
   {
-    styles ,setDate, date, name,
+    styles ,setDate, date,
     isButton, value, register,
     onChange
   }
@@ -36,14 +35,14 @@ export const Field: FC<IFieldProps> = (
 
   return (
     <div className={styles?.field}>
-      <input {...register ? register(name) : {}}
+      <input {...register ? register('title') : {}}
              className={styles?.input}
              type="text"
              value={value}
              placeholder={'Enter title here'}
              onChange={onChangeText}
       />
-      <input {...register ? register(name) : {}}
+      <input {...register ? register('description') : {}}
              className={styles?.input}
              type="text"
              value={value}

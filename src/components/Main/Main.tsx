@@ -6,7 +6,8 @@ import {Field} from "../Task/Field/Field.tsx";
 import {ICreateTask} from "../../services/task.type.ts";
 import stylesTodolist from '../Task/Field/TaskField.module.scss';
 import {useTaskQuery} from "../../react-query/useTaskQuery.ts";
-import {format} from 'date-fns-tz';
+import {Tasks} from "../Task/Tasks.tsx";
+import {formateDate} from "../../utils/formateDate.ts";
 
 export type IDatePiece = Date | null;
 
@@ -14,8 +15,7 @@ export type IValueInput = IDatePiece | [IDatePiece, IDatePiece];
 
 export const Main: FC = () => {
   const [date, setDate] = useState<IValueInput>(new Date())
-  const originalDate = new Date(date!.toString());
-  const formattedDate = format(originalDate, "yyyy-MM-dd HH:mm", { timeZone: 'Europe/Moscow' });
+  const formattedDate = formateDate(date, 'one')
 
   const {getTasks, createTask} = useTaskQuery(undefined, 'asc')
 
@@ -31,7 +31,7 @@ export const Main: FC = () => {
       create({
         title: data.title,
         description: data.description,
-        dateTime: formattedDate
+        dateTime: formattedDate!
       })
       reset()
     }
@@ -39,10 +39,10 @@ export const Main: FC = () => {
 
   return (
     <main className={styles.main}>
+      <h1 className={styles.title}>Task planner</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.field}>
           <Field styles={stylesTodolist}
-                 name={'title'}
                  register={register}
                  isButton={true}
                  date={date}
@@ -50,7 +50,9 @@ export const Main: FC = () => {
           />
         </div>
       </form>
-
+      <div className={styles.tasks}>
+         <Tasks tasks={tasks!} />
+      </div>
     </main>
   );
 };
