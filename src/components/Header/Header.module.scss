@@ -1,0 +1,25 @@
+.header {
+  background: #343A40;
+  height: 50px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  .nickname {
+    font-size: 20px;
+  }
+
+  .btn {
+    background: #007BFF;
+    border: 0;
+    color: #fff;
+    height: 30px;
+    width: 70px;
+    
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
