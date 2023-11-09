@@ -1,12 +1,14 @@
 .field {
   display: flex;
-  align-items: center;
+  //align-items: center;
+  flex-direction: column;
+  gap: 5px;
   .input {
     border: 1px solid #E0E0E0;
     height: 25px;
     font-size: 15px;
     padding: 0 10px;
-    width: 100%;
+    width: 90%;
     outline: none;
   }
 
@@ -17,5 +19,20 @@
     background: #007BFF;
     color: #fff;
     cursor: pointer;
+  }
+
+  .dateAndBtn {
+
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    div {
+      font-size: 15px;
+      div {
+        font-size: 15px;
+      }
+    }
   }
 }

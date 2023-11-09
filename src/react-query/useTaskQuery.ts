@@ -1,9 +1,9 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import {TaskService} from "../services/task.service.ts";
 import {useMemo} from "react";
-import {ICreateTask, IUpdateTask} from "../services/task.type.ts";
+import {ICreateTask, IShareTask, IUpdateTask} from "../services/task.type.ts";
 
-export const useTaskQuery = (taskId?: string, order?: 'asc' | 'desc') => {
+export const useTaskQuery = (taskId?: string, order?: 'ASC' | 'DESC') => {
   const getTasks = useQuery({
     queryFn: () => TaskService.fetchAllTask(order!),
     queryKey: ['allTasks']
@@ -25,7 +25,21 @@ export const useTaskQuery = (taskId?: string, order?: 'asc' | 'desc') => {
     }
   })
 
+  const shareTask = useMutation({
+    mutationFn: (data: IShareTask) => TaskService.shareTask(taskId!, data),
+    onSuccess: () => {
+      client.invalidateQueries({queryKey: ['allTasks']})
+    }
+  })
+
+  const deleteTask = useMutation({
+    mutationFn: (taskId: string) => TaskService.deleteTask(taskId),
+    onSuccess: () => {
+      client.invalidateQueries({queryKey: ['allTasks']})
+    }
+  })
+
   return useMemo(() => ({
-    getTasks, createTask, updateTask
-  }), [getTasks, createTask, updateTask])
+    getTasks, createTask, updateTask, deleteTask, shareTask
+  }), [getTasks, createTask, updateTask, deleteTask, shareTask])
 }

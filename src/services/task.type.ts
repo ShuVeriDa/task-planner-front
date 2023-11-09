@@ -45,6 +45,10 @@ export interface ICreateTask {
   dateTime: string
 }
 
+export interface IShareTask {
+  nickname: string
+}
+
 export interface IUpdateTask {
   title?: string;
   description?: string;

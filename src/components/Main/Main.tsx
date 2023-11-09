@@ -17,7 +17,7 @@ export const Main: FC = () => {
   const [date, setDate] = useState<IValueInput>(new Date())
   const formattedDate = formateDate(date, 'one')
 
-  const {getTasks, createTask} = useTaskQuery(undefined, 'asc')
+  const {getTasks, createTask} = useTaskQuery(undefined, 'ASC')
 
   const {data: tasks, isSuccess} = getTasks
   const {mutate: create} = createTask
@@ -51,7 +51,7 @@ export const Main: FC = () => {
         </div>
       </form>
       <div className={styles.tasks}>
-         <Tasks tasks={tasks!} />
+        <Tasks tasks={tasks!}/>
       </div>
     </main>
   );

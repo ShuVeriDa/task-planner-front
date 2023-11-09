@@ -13,7 +13,7 @@ export const Tasks: FC<ITaskProps> = ({tasks}) => {
       <h2>My tasks</h2>
       {tasks?.myTasks.map(task => <TaskItem key={task.id} task={task}/>)}
       <h2>Доступные задачи других пользователей</h2>
-      {tasks?.availableTasks.map(task => <TaskItem key={task.id} task={task}/>)}
+      {tasks?.availableTasks.map(task => <TaskItem key={task.id} task={task} isNotMy={true}/>)}
     </div>
   );
 };

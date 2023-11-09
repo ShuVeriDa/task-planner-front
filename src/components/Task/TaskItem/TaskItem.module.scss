@@ -1,33 +1,45 @@
 .taskItem {
   display: flex;
-  gap: 10px;
-  justify-content: space-between;
+  gap: 20px;
+  //justify-content: space-between;
   width: 450px;
+  position: relative;
 
   //align-items: center;
 
   .title {
+    word-wrap: break-word;
     font-size: 20px;
+    width: 350px;
+  }
+
+  .nickname {
+    font-size: 16px;
+    color: #1a5bb6;
+  }
+
+  .description {
+    word-wrap: break-word;
+    font-size: 17px;
+    color: #3b3b3b;
     width: inherit;
+  }
+
+  .isVisible {
+    font-size: 15px;
   }
 
   .checkbox {
     display: flex;
     //align-content: center;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 
     input {
       width: 15px;
       height: 15px;
     }
   }
-
-  .description {
-    color: #b0afaf;
-    width: inherit;
-  }
-
 
   .infoContainer {
     display: flex;
@@ -42,10 +54,94 @@
     max-width: 300px;
     display: flex;
     flex-direction: column;
+    gap: 5px;
   }
 
   .date {
+    font-size: 13px;
     padding: 5px 0;
     box-sizing: border-box;
+    color: #919191;
   }
+
+  .shareInput {
+    display: flex;
+    gap: 10px;
+  }
+
+  .shareInput input {
+
+    border: 1px solid #E0E0E0;
+    height: 25px;
+    font-size: 15px;
+    padding: 0 10px;
+    width: 80%;
+    outline: none;
+  }
+
+  .btn {
+    display: flex;
+    justify-content: right;
+    position: relative;
+    left: 15px;
+
+    .edit {
+      border: none;
+      background: transparent;
+      color: orange;
+      font-size: 23px;
+      padding: 0;
+      width: 25px;
+      margin-right: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .remove {
+      position: relative;
+      top: 3px;
+      color: #ff5c5c;
+      font-size: 18px;
+      width: 25px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .cancel {
+      width: 25px;
+      //color: #ff5c5c;
+      font-size: 25px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .share {
+      font-size: 22px;
+      color: #1a5bb6;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+
+  }
+
+  .send {
+    font-size: 22px;
+    color: #1a5bb6;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
 }

@@ -1,35 +1,43 @@
 import {ChangeEvent, FC} from 'react';
 import {ICreateTask} from "../../../services/task.type.ts";
 import {UseFormRegister} from "react-hook-form";
-// import DateTimePicker from "react-datetime-picker/dist/esm";
 import {IValueInput} from "../../Main/Main.tsx";
+import DateTimePicker from "react-datetime-picker";
 import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-datetime-picker/dist/DateTimePicker.css';
 import 'react-clock/dist/Clock.css';
-import DateTimePicker from "react-datetime-picker";
+
 
 interface IFieldProps {
   register?: UseFormRegister<ICreateTask>
-  onChange?: (text: string) => void
+  onChangeTitle?: (text: string) => void
+  onChangeDescription?: (description: string) => void
   styles?: { readonly [key: string]: string }
   isButton?: boolean
-  value?: string
-  date?:IValueInput
-  setDate?: (date:IValueInput) => void
+  titleValue?: string
+  descriptionValue?: string
+  date?:IValueInput | any
+  setDate?: (date:IValueInput | any) => void
 }
 
 export const Field: FC<IFieldProps> = (
   {
-    styles ,setDate, date,
-    isButton, value, register,
-    onChange
+    styles , descriptionValue,setDate, date,
+    isButton, titleValue, register,
+    onChangeTitle, onChangeDescription
   }
 ) => {
 
   const onChangeText = (e: ChangeEvent<HTMLInputElement>) => {
-    if (onChange) {
-      onChange(e.currentTarget.value)
+    if (onChangeTitle) {
+      onChangeTitle(e.currentTarget.value)
+    }
+  }
+
+  const onChangeDesc = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChangeDescription) {
+      onChangeDescription(e.currentTarget.value)
     }
   }
 
@@ -38,16 +46,16 @@ export const Field: FC<IFieldProps> = (
       <input {...register ? register('title') : {}}
              className={styles?.input}
              type="text"
-             value={value}
+             value={titleValue}
              placeholder={'Enter title here'}
              onChange={onChangeText}
       />
       <input {...register ? register('description') : {}}
              className={styles?.input}
              type="text"
-             value={value}
+             value={descriptionValue}
              placeholder={'Enter description here'}
-             onChange={onChangeText}
+             onChange={onChangeDesc}
       />
       <div className={styles?.dateAndBtn}>
         <DateTimePicker onChange={setDate} value={date} disableClock className={'react-datetime-picker'}/>
