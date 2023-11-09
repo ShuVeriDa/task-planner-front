@@ -4,10 +4,11 @@ import {ITask} from "../../../services/task.type.ts";
 import {useTaskQuery} from "../../../react-query/useTaskQuery.ts";
 import {TitleAndEdit} from "../TitleAndEdit/TitleAndEdit.tsx";
 import stylesUpdate from '../Field/UpdateField.module.scss';
+import TaskContext from "../../TaskContext/TaskContextProvider.tsx";
 
 interface ITaskItemProps {
   task: ITask
-  isNotMy?:boolean
+  isNotMy?: boolean
 }
 
 export const TaskItem: FC<ITaskItemProps> = ({task, isNotMy}) => {
@@ -29,20 +30,20 @@ export const TaskItem: FC<ITaskItemProps> = ({task, isNotMy}) => {
   }
   const changeDate = (date: string) => setNewDate(date)
   const onShareToggle = () => {
-    if(!isShare) {
+    if (!isShare) {
       setIsShare(true)
     }
 
-    if(isShare) {
+    if (isShare) {
       setIsShare(false)
     }
   }
-  const onShareHandler = async () => {
-    if(!isShare) {
+  const onShareHandler = () => {
+    if (!isShare) {
       setIsShare(true)
     }
 
-    if(isShare) {
+    if (isShare) {
       share({nickname: shareNickName})
       setIsShare(false)
     }
@@ -69,35 +70,26 @@ export const TaskItem: FC<ITaskItemProps> = ({task, isNotMy}) => {
   }
 
   return (
-    <div className={styles.taskItem}>
-      <div className={styles.checkbox}>
-        <input type="checkbox"
-               onChange={onChangeCheckbox}
-               checked={task.completed}
-               disabled={isNotMy}
+    <TaskContext.Provider value={{
+      task, newTitle, newDescription, newDate, isEdit, shareNickName, isShare, isNotMy,
+      setNewTitle, setNewDescription, setNewDate, setEdit, setShareNickName,
+      setIsShare, changeTitle, changeDescription, onChangeCheckbox, changeDate, onShareToggle,
+      onShareHandler, onEditOpen, onEditClose, onEditHandler, onEditVisible
+    }}>
+      <div className={styles.taskItem}>
+        <div className={styles.checkbox}>
+          <input type="checkbox"
+                 onChange={onChangeCheckbox}
+                 checked={task.completed}
+                 disabled={isNotMy}
+          />
+        </div>
+        <TitleAndEdit
+          styles={styles}
+          stylesUpdate={stylesUpdate}
         />
-
       </div>
-      <TitleAndEdit isEdit={isEdit}
-                    isNotMy={isNotMy}
-                    onEditOpen={onEditOpen}
-                    onEditHandler={onEditHandler}
-                    newTitle={newTitle}
-                    newDescription={newDescription}
-                    newDate={newDate}
-                    onEditClose={onEditClose}
-                    onShareToggle={onShareToggle}
-                    onShareHandler={onShareHandler}
-                    task={task}
-                    isShare={isShare}
-                    styles={styles}
-                    changeTitle={changeTitle}
-                    changeDescription={changeDescription}
-                    changeDate={changeDate}
-                    stylesUpdate={stylesUpdate}
-                    setShareNickName={setShareNickName}
-                    onEditVisible={onEditVisible}
-      />
-    </div>
+    </TaskContext.Provider>
+
   );
 };
