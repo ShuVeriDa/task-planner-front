@@ -15,7 +15,7 @@ export const Tasks: FC<ITaskProps> = ({tasks}) => {
      <>
           {tasks?.myTasks.length !== 0 && <TasksContainer tasks={tasks?.myTasks}
                                                           isNotMy={false}
-                                                          title={'My tasks'}
+                                                          title={'Мои задачи'}
           />}
           {tasks?.availableTasks.length !== 0 && <TasksContainer tasks={tasks?.availableTasks}
                                                                  isNotMy={true}

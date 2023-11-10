@@ -16,7 +16,8 @@ export const TitleAndEdit: FC<ITitleAndEditProps> = (
   {styles, stylesUpdate,}
 ) => {
   const {
-    task, onEditOpen, isEdit, isNotMy, isShare} = useContext(TaskContext)!
+    task, onEditOpen, isEdit, isNotMy, isShare
+  } = useContext(TaskContext)!
 
 
   const {deleteTask} = useTaskQuery()
@@ -28,7 +29,10 @@ export const TitleAndEdit: FC<ITitleAndEditProps> = (
   }
 
   useEffect(() => {
-    checkTaskDeadlines(task);
+    if(!isNotMy) {
+      checkTaskDeadlines(task);
+    }
+
   }, []);
 
   return (
