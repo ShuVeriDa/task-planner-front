@@ -58,7 +58,11 @@ export const Field: FC<IFieldProps> = (
              onChange={onChangeDesc}
       />
       <div className={styles?.dateAndBtn}>
-        <DateTimePicker onChange={setDate} value={date} disableClock className={'react-datetime-picker'}/>
+        <DateTimePicker onChange={setDate}
+                        value={date}
+                        disableClock
+                        className={'react-datetime-picker'}
+        />
         {isButton && <button className={styles?.btn}>Submit</button>}
       </div>
 

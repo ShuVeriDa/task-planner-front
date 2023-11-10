@@ -1,4 +1,5 @@
 import {StatusEnum} from "../types";
+import {ITask} from "../../services/task.type.ts";
 
 export interface IUser {
   id: string
@@ -7,6 +8,17 @@ export interface IUser {
   createdAt: string
   updatedAt: string
 }
+
+export interface IUserResponse {
+  id: string
+  nickname: string
+  tasks: ITask[]
+}
+
+export interface ISearchUserResponse {
+  users: IUserResponse[]
+}
+
 export interface IInitialState {
   user: IUser | null
   status: StatusEnum

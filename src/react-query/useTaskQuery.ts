@@ -1,5 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {TaskService} from "../services/task.service.ts";
+import {TaskService} from "../services/task/task.service.ts";
 import {useMemo} from "react";
 import {ICreateTask, IShareTask, IUpdateTask} from "../services/task.type.ts";
 

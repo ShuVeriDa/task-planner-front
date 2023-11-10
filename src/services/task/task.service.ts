@@ -1,6 +1,6 @@
-import {instance} from "../api/api.interceptor.ts";
-import {getTasksUrl} from "../api/api.config.ts";
-import {IAllTaskResponse, ICreateTask, IShareTask, ITask, IUpdateTask} from "./task.type.ts";
+import {instance} from "../../api/api.interceptor.ts";
+import {getTasksUrl} from "../../api/api.config.ts";
+import {IAllTaskResponse, ICreateTask, IShareTask, ITask, IUpdateTask} from "../task.type.ts";
 
 export const TaskService = {
   fetchAllTask: async (order: "ASC" | 'DESC') => {

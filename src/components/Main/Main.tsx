@@ -7,7 +7,7 @@ import {ICreateTask} from "../../services/task.type.ts";
 import stylesTodolist from '../Task/Field/TaskField.module.scss';
 import {useTaskQuery} from "../../react-query/useTaskQuery.ts";
 import {Tasks} from "../Task/Tasks.tsx";
-import {formateDate} from "../../utils/formateDate.ts";
+import {formatDate} from "../../utils/formatDate.ts";
 
 export type IDatePiece = Date | null;
 
@@ -15,14 +15,12 @@ export type IValueInput = IDatePiece | [IDatePiece, IDatePiece];
 
 export const Main: FC = () => {
   const [date, setDate] = useState<IValueInput>(new Date())
-  const formattedDate = formateDate(date, 'one')
+  const formattedDate = formatDate(date, 'one')
 
   const {getTasks, createTask} = useTaskQuery(undefined, 'ASC')
 
   const {data: tasks, isSuccess} = getTasks
   const {mutate: create} = createTask
-
-  console.log(isSuccess ? tasks : null)
 
   const {register, handleSubmit, reset} = useForm<ICreateTask>({mode: 'onChange'})
 
@@ -51,7 +49,7 @@ export const Main: FC = () => {
         </div>
       </form>
       <div className={styles.tasks}>
-        <Tasks tasks={tasks!}/>
+        <Tasks tasks={isSuccess ? tasks : null}/>
       </div>
     </main>
   );

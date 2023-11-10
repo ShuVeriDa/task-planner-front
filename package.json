@@ -17,6 +17,7 @@
     "clsx": "^2.0.0",
     "date-fns-tz": "^2.0.0",
     "js-cookie": "^3.0.5",
+    "lodash.debounce": "^4.0.8",
     "luxon": "^3.4.3",
     "moment": "^2.29.4",
     "react": "^18.2.0",
@@ -34,6 +35,7 @@
     "toast": "^0.5.4"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.9",
     "@types/luxon": "^3.3.4",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",

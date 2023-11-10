@@ -1,6 +1,6 @@
 import {FC, useContext} from 'react';
 import TaskContext from "../../TaskContext/TaskContextProvider.tsx";
-import {formateDate} from "../../../utils/formateDate.ts";
+import {formatDate} from "../../../utils/formatDate.ts";
 
 interface IInfoProps {
   styles?: { readonly [key: string]: string }
@@ -8,7 +8,9 @@ interface IInfoProps {
 
 export const Info: FC<IInfoProps> = ({styles}) => {
   const {task, isNotMy, onEditVisible} = useContext(TaskContext)!
-  const formattedDate = formateDate(task.dateTime, 'two')
+  const formattedDate = formatDate(task.dateTime, 'two')
+
+
   return (
     <div className={styles?.info}>
       {isNotMy && <span className={styles?.nickname}>{task.user.nickname}</span>}

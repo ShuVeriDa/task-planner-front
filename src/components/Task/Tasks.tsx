@@ -4,7 +4,7 @@ import {IAllTaskResponse} from "../../services/task.type.ts";
 import {TaskItem} from "./TaskItem/TaskItem.tsx";
 
 interface ITaskProps {
-  tasks: IAllTaskResponse
+  tasks: IAllTaskResponse | null
 }
 
 export const Tasks: FC<ITaskProps> = ({tasks}) => {

@@ -3,6 +3,8 @@ import styles from './Header.module.scss';
 import {SubmitButton} from "../SubmitButton/SubmitButton.tsx";
 import {useActions} from "../../hooks/useActions.ts";
 import {useAuth} from "../../hooks/useAuth.ts";
+import {SearchUsers} from "../SearchUsers/SearchUsers.tsx";
+
 interface IHeaderProps {
 }
 
@@ -12,11 +14,11 @@ export const Header: FC<IHeaderProps> = () => {
   return (
     <header className={styles.header}>
       <div className={styles.nickname}>{user?.nickname}</div>
-
-        <SubmitButton styles={styles}
-                      title={"Logout"}
-                      onClick={logoutTC}
-        />
+      <SearchUsers/>
+      <SubmitButton styles={styles}
+                    title={"Logout"}
+                    onClick={logoutTC}
+      />
 
     </header>
   );
